@@ -1,3 +1,4 @@
+[![Check dist/](https://github.com/convention-change/action-standard-version/actions/workflows/check-dist.yml/badge.svg)](https://github.com/convention-change/action-standard-version/actions/workflows/check-dist.yml)
 [![GitHub license](https://img.shields.io/github/license/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version)
 [![GitHub latest SemVer tag)](https://img.shields.io/github/v/tag/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/tags)
 [![GitHub release)](https://img.shields.io/github/v/release/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/releases)
