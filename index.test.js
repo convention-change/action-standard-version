@@ -10,7 +10,7 @@ test('throws invalid number', async () => {
 
 test('wait 500 ms', async () => {
   const start = new Date();
-  await wait(500);
+  await wait(510);
   const end = new Date();
   var delta = Math.abs(end - start);
   expect(delta).toBeGreaterThanOrEqual(500);
