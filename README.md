@@ -1,3 +1,7 @@
+[![GitHub license](https://img.shields.io/github/license/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version)
+[![GitHub latest SemVer tag)](https://img.shields.io/github/v/tag/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/tags)
+[![GitHub release)](https://img.shields.io/github/v/release/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/releases)
+
 # Create a JavaScript Action
 
 <p align="center">
@@ -114,3 +118,15 @@ with:
 ```
 
 See the [actions tab](https://github.com/actions/javascript-action/actions) for runs of this action! :rocket:
+
+## Contributing
+
+[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4-ff69b4.svg)](.github/CONTRIBUTING_DOC/CODE_OF_CONDUCT.md)
+[![GitHub contributors](https://img.shields.io/github/contributors/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/graphs/contributors)
+
+We welcome community contributions to this project.
+
+Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
+
+请阅读有关 [贡献者指南](.github/CONTRIBUTING_DOC/zh-CN/CONTRIBUTING.md) 以获取更多如何入门的信息
+
