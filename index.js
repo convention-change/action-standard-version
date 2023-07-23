@@ -1,18 +1,44 @@
 const core = require('@actions/core');
-const wait = require('./wait');
+// const github = require('@actions/github');
+// const {getConfiguration} = require('standard-version/lib/configuration');
+const standardVersion = require('standard-version');
+const cli = require("standard-version/command");
 
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
+    // let configuration = getConfiguration();
+    // configuration.dryRun = true
+    let releaseAs = core.getInput('release-as');
+    const releaseReg =  core.getInput('release-ref-regexp')
+    if (!releaseReg || releaseReg === '') {
+      core.setFailed('release-ref-regexp is empty');
+      return;
+    }
 
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
+    if (releaseAs === '') {
+      let releaseByRef = core.getInput('release-by-ref');
+      if (!releaseByRef || releaseByRef === '') {
+        core.error('release-by-ref is empty');
+        core.setFailed("'release-by-ref is empty'")
+        return;
+      }
+      core.info(`release-by-ref: ${releaseByRef}`);
+      const match = releaseByRef.match(releaseReg);
+      if (!match) {
+        core.error('release-by-ref not match release-ref-regexp');
+        core.ExitCode = 2;
+        return;
+      }
+      releaseAs = match[1].trim()
+    }
 
-    core.setOutput('time', new Date().toTimeString());
+    if (core.getInput('dry-run') === 'true') {
+      cli.parse(`standard-version --dry-run --release-as ${releaseAs}`);
+      await standardVersion(cli.argv);
+    }
+
   } catch (error) {
     core.setFailed(error.message);
   }

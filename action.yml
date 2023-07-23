@@ -1,10 +1,25 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  release-by-ref:
+    description: 'release branch as release-{MAJOR}.{MINOR}.{PATCH}-{Backus–Naur} and set by github.head_ref'
     required: true
-    default: '1000'
+  dry-run:
+    description: 'See the commands that running'
+    required: false
+  release-as:
+    description: Specify the release type manually. if set this will override the `release-by-ref` input
+    default: ''
+    required: false
+  release-ref-regexp:
+    description: 'release ref regexp or setting as release\-(.*)(\-)+([\w].*)+'
+    default: '.*release\-(\w.*)'
+    required: false
+  tag-prefix:
+    description: 'tag prefix'
+    default: 'v'
+    required: false
+
 outputs:
   time: # output will be available to future steps
     description: 'The current time after waiting'
