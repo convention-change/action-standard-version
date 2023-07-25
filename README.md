@@ -21,12 +21,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        
+
+      - name: Configure committer
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
       - name: create-standard-version
+        id: create-standard-version
         uses: convention-change/action-standard-version@main
         with:
           release-by-ref: ${{ github.head_ref }}
+          push-changes-and-tag: false
           dry-run: true
+
+      - name: get-action-standard-version-out
+        run: |
+          - echo ${{ steps.create-standard-version.outputs.release-tag-name }}
+          - echo ${{ steps.create-standard-version.outputs.release-tag-short }}
 ```
 
 # dev

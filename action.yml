@@ -4,11 +4,18 @@ inputs:
   release-by-ref:
     description: 'release branch as release-{MAJOR}.{MINOR}.{PATCH}-{Backus–Naur} and set by github.head_ref'
     required: true
+  push-changes-and-tag:
+    description: 'after make change lop then push change and tags to remote'
+    required: true
   dry-run:
     description: 'See the commands that running'
     required: false
+  target-branch:
+    description: 'tag branch to push default is env by GITHUB_REF'
+    default: ''
+    required: false
   release-as:
-    description: Specify the release type manually. if set this will override the `release-by-ref` input
+    description: 'Specify the release type manually. if set this will override the `release-by-ref` input'
     default: ''
     required: false
   release-ref-regexp:
@@ -21,8 +28,10 @@ inputs:
     required: false
 
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  release-tag-name: # output will be available to future steps
+    description: 'release tag name'
+  release-tag-short:
+    description: 'release tag without tag prefix'
 runs:
   using: 'node16'
   main: 'dist/index.js'
