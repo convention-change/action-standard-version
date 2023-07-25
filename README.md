@@ -3,6 +3,13 @@
 [![GitHub latest SemVer tag)](https://img.shields.io/github/v/tag/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/tags)
 [![GitHub release)](https://img.shields.io/github/v/release/convention-change/action-standard-version)](https://github.com/convention-change/action-standard-version/releases)
 
+## Features
+
+- [x] create CHANGELOG.md and tag by [standard-version](https://github.com/conventional-changelog/standard-version)
+- [x] support `dry-run` to see what commands would be run, without committing to git or updating files
+- [x] push tag and CHANGELOG.md to remote branch at `target-branch` or by `GITHUB_REF`
+- [x] out put `release-tag-name` and `release-tag-short` to use in next step
+    - [x] out env `ACTION_STANDARD_VERSION_RELEASE_TAG_NAME` by default or change by `release-tag-name-env` 
 
 ## Usage
 
@@ -32,15 +39,15 @@ jobs:
         uses: convention-change/action-standard-version@main
         with:
           release-by-ref: ${{ github.head_ref }}
-          push-changes-and-tag: false
-          dry-run: true
+         # dry-run: true
+         # push-changes-and-tag: true
 
       - name: get-action-standard-version-out
         run: |
           echo "outputs.release-tag-name   ${{ steps.create-standard-version.outputs.release-tag-name }}"
           echo "outputs.release-tag-short  ${{ steps.create-standard-version.outputs.release-tag-short }}"
           # change by release-tag-name-env
-          echo "ACTION_STANDARD_VERSION_RELEASE_TAG_NAME ${ACTION_STANDARD_VERSION_RELEASE_TAG_NAME}"
+          echo "ACTION_STANDARD_VERSION_RELEASE_TAG_NAME ${{ env.ACTION_STANDARD_VERSION_RELEASE_TAG_NAME }}"
 ```
 
 # dev
