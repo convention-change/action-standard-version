@@ -22,6 +22,7 @@ test('test runs', () => {
     console.log(`GITHUB_ACTIONS is ${process.env.GITHUB_ACTIONS} and pass test`);
     return;
   }
+  process.env['INPUT_RELEASE-TAG-NAME-ENV'] = `ACTION_STANDARD_VERSION_RELEASE_TAG_NAME`;
   process.env['INPUT_RELEASE-REF-REGEXP'] = `.*release\\-(\\w.*)`;
   process.env['INPUT_TAG-PREFIX'] = `v`;
   process.env['INPUT_DRY-RUN'] = 'true';

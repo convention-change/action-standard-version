@@ -26,6 +26,10 @@ inputs:
     description: 'tag prefix'
     default: 'v'
     required: false
+  release-tag-name-env:
+    description: 'release tag name env'
+    default: 'ACTION_STANDARD_VERSION_RELEASE_TAG_NAME'
+    required: false
 
 outputs:
   release-tag-name: # output will be available to future steps

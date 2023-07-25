@@ -73,6 +73,9 @@ async function run() {
     }
     core.setOutput('release-tag-short', releaseAs);
     core.setOutput('release-tag-name', `${tagPrefix}${releaseAs}`);
+    let releaseTagNameEnv = core.getInput('release-tag-name-env');
+    core.debug(`releaseTagNameEnv: ${releaseTagNameEnv}`)
+    core.exportVariable(releaseTagNameEnv, `${tagPrefix}${releaseAs}`);
 
   } catch (error) {
     console.error(error.stack);

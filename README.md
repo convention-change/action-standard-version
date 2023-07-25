@@ -39,6 +39,8 @@ jobs:
         run: |
           echo "outputs.release-tag-name   ${{ steps.create-standard-version.outputs.release-tag-name }}"
           echo "outputs.release-tag-short  ${{ steps.create-standard-version.outputs.release-tag-short }}"
+          # change by release-tag-name-env
+          echo "ACTION_STANDARD_VERSION_RELEASE_TAG_NAME ${ACTION_STANDARD_VERSION_RELEASE_TAG_NAME}"
 ```
 
 # dev
