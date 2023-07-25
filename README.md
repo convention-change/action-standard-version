@@ -37,8 +37,8 @@ jobs:
 
       - name: get-action-standard-version-out
         run: |
-          - echo ${{ steps.create-standard-version.outputs.release-tag-name }}
-          - echo ${{ steps.create-standard-version.outputs.release-tag-short }}
+          echo "outputs.release-tag-name   ${{ steps.create-standard-version.outputs.release-tag-name }}"
+          echo "outputs.release-tag-short  ${{ steps.create-standard-version.outputs.release-tag-short }}"
 ```
 
 # dev
