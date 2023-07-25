@@ -6,12 +6,15 @@
 ## Features
 
 - [x] create CHANGELOG.md and tag by [standard-version](https://github.com/conventional-changelog/standard-version)
+- [x] `release-ref-regexp` support `.*release\-(\w.*)` as match group 1 to find out release version
 - [x] support `dry-run` to see what commands would be run, without committing to git or updating files
 - [x] push tag and CHANGELOG.md to remote branch at `target-branch` or by `GITHUB_REF`
 - [x] out put `release-tag-name` and `release-tag-short` to use in next step
     - [x] out env `ACTION_STANDARD_VERSION_RELEASE_TAG_NAME` by default or change by `release-tag-name-env` 
 
 ## Usage
+
+- at `release-1.0.0` branch, pull_request then merged to `main` branch, then create tag `v1.0.0` and CHANGELOG.md
 
 ```yaml
 on:
