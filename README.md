@@ -36,7 +36,7 @@ jobs:
 
       - name: create-standard-version
         id: create-standard-version
-        uses: convention-change/action-standard-version@main
+        uses: convention-change/action-standard-version@v1
         with:
           release-by-ref: ${{ github.head_ref }}
          # dry-run: true
