@@ -1,5 +1,5 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'action-standard-version'
+description: 'create CHANGELOG.md and tag by https://github.com/conventional-changelog/standard-version'
 inputs:
   release-by-ref:
     description: 'release branch as release-{MAJOR}.{MINOR}.{PATCH}-{Backus–Naur} and set by github.head_ref'
@@ -39,3 +39,6 @@ outputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  color: purple
+  icon: tag
