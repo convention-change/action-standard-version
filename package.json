@@ -10,8 +10,9 @@
     "format": "npx prettier --write eslint.config.mjs \"{bin,src,tests}/**/*.{js,mjs,vue,ts,tsx}\"",
     "lint:eslint": "npx eslint .",
     "lint": "npm run lint:eslint",
-    "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
-    "test": "jest",
+    "jest:coverage": "npx jest --ci --coverage --silent",
+    "test": "npx jest",
+    "prepare": "npx ncc build index.js -o dist --source-map --license licenses.txt",
     "all": "npm run lint && npm run prepare && npm run test"
   },
   "repository": {
