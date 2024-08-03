@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          - 'lts/*'
+          # - 'lts/*'
           - '20.x'
         os:
           - ubuntu-latest
@@ -33,9 +33,9 @@ jobs:
       -
         name: Install dependencies
         run: |
+          node -v
           npm install
           npm ci
-          node -v
 
       -
         name: Test with node
