@@ -1,5 +1,3 @@
-dist/** -diff linguist-generated=true
-
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
@@ -14,13 +12,18 @@ dist/** -diff linguist-generated=true
 *.csproj text eol=crlf
 *.user   text eol=crlf
 *.asset  text eol=lf
-*.json  test eol=lf
-*.golden  test eol=lf
-*.mod  test eol=lf
-*.sum  test eol=lf
-*.hbs  test eol=lf
-*.js  test eol=lf
-*.js.map  test eol=lf
+*.json  text eol=lf
+*.js  text eol=lf
+*.mjs  text eol=lf
+*.ts  text eol=lf
+*.tsx  text eol=lf
+*.yml  text eol=lf
+*.yaml  text eol=lf
+*.vue  text eol=lf
+*.golden  text eol=lf
+*.go  text eol=lf
+*.mod  text eol=lf
+*.sum  text eol=lf
 
 ###############################################################################
 # Set default behavior for command prompt diff.
@@ -45,6 +48,7 @@ dist/** -diff linguist-generated=true
 ###############################################################################
 *.jpg   binary
 *.png   binary
+*.webp   binary
 *.gif   binary
 *.lib   binary
 *.dll   binary
@@ -68,3 +72,8 @@ dist/** -diff linguist-generated=true
 *.PDF   diff=astextplain
 *.rtf   diff=astextplain
 *.RTF   diff=astextplain
+
+###############################################################################
+# linguist language
+###############################################################################
+*.mk linguist-language=Javascript
