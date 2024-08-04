@@ -13,11 +13,13 @@ ENV_COVERAGE_OUT_FOLDER = ${ENV_ROOT}/coverage/
 ENV_NODE_MODULES_FOLDER = ${ENV_ROOT}/node_modules/
 ENV_NODE_MODULES_LOCK_FILE = ${ENV_ROOT}/package-lock.json
 
+.PHONY: utils
 utils:
 	node -v
 	npm -v
 	npm install -g commitizen cz-conventional-changelog conventional-changelog-cli npm-check-updates
 
+.PHONY: versionHelp
 versionHelp:
 	@git fetch --tags
 	@echo "project base info"
@@ -29,6 +31,7 @@ versionHelp:
 	@echo "-> check at: ${ENV_MODULE_MANIFEST}:3"
 	@echo " $(shell head -n 3 ${ENV_MODULE_MANIFEST} | tail -n 1)"
 
+.PHONY: tagBefore
 tagBefore: versionHelp
 	@cd ${ENV_MODULE_FOLDER} && conventional-changelog -i ${ENV_MODULE_CHANGELOG} -s --skip-unstable
 	@echo ""
@@ -36,69 +39,103 @@ tagBefore: versionHelp
 	@echo "place check all file, then can add tag like this!"
 	@echo "$$ git tag -a '${ENV_DIST_VERSION}' -m 'message for this tag'"
 
+.PHONY: cleanCoverageOut
 cleanCoverageOut:
-	@if [ -d ${ENV_COVERAGE_OUT_FOLDER} ]; \
-	then rm -rf ${ENV_COVERAGE_OUT_FOLDER} && echo "~> cleaned ${ENV_COVERAGE_OUT_FOLDER}"; \
-	else echo "~> has cleaned ${ENV_COVERAGE_OUT_FOLDER}"; \
-	fi
+	@$(RM) -r ${ENV_COVERAGE_OUT_FOLDER}
+	$(info ~> has cleaned ${ENV_COVERAGE_OUT_FOLDER})
 
+.PHONY: cleanNpmCache
 cleanNpmCache:
-	@if [ -d ${ENV_NODE_MODULES_FOLDER} ]; \
-	then rm -rf ${ENV_NODE_MODULES_FOLDER} && echo "~> cleaned ${ENV_NODE_MODULES_FOLDER}"; \
-	else echo "~> has cleaned ${ENV_NODE_MODULES_FOLDER}"; \
-	fi
-	@if [ -f ${ENV_NODE_MODULES_LOCK_FILE} ]; \
-	then rm -f ${ENV_NODE_MODULES_LOCK_FILE} && echo "~> cleaned ${ENV_NODE_MODULES_LOCK_FILE}"; \
-	else echo "~> has cleaned ${ENV_NODE_MODULES_LOCK_FILE}"; \
-	fi
+	@$(RM) -r ${ENV_NODE_MODULES_FOLDER}
+	$(info ~> has cleaned ${ENV_NODE_MODULES_FOLDER})
+	@$(RM) ${ENV_NODE_MODULES_LOCK_FILE}
+	$(info ~> has cleaned ${ENV_NODE_MODULES_LOCK_FILE})
 
+.PHONY: cleanAll
 cleanAll: cleanCoverageOut cleanNpmCache
 	@echo "=> clean all finish"
 
+.PHONY: installGlobal
 installGlobal:
-	npm install rimraf eslint jest codecov --global
+	npm install codecov --global
 
+.PHONY: install
 install:
 	npm install
+	npm run clean:lockfile
 
+.PHONY: depPrune
+depPrune:
+	npm prune
+
+.PHONY: dep
+dep: install
+
+.PHONY: depReInstall
+depReInstall: cleanNpmCache dep
+
+.PHONY: installCi
 installCi:
 	npm ci
 
-upgradeAll:
-	ncu -u
-	npm ci
+.PHONY: upCheckUpgrade
+upCheckUpgrade:
+	npx npm-check-updates
 
-installAll: utils installGlobal install
-	@echo "=> install all finish"
+.PHONY: upDoNpmCheckUpgrade
+upDoNpmCheckUpgrade:
+	npx npm-check-updates --doctor -u
+	npm install
 
+.PHONY: upNoInteractive
+upNoInteractive: upCheckUpgrade upDoNpmCheckUpgrade
+
+.PHONY: up
+up:
+	npx npm-check-updates --interactive --doctor --format group
+
+.PHONY: format
 format:
 	npm run format
 
+.PHONY: prepare
 prepare:
 	npm run prepare
 
+.PHONY: lint
 lint:
 	npm run lint
 
+.PHONY: test
 test: export GITHUB_ACTIONS=true
 test:
 	npm run test
 
-ci: export GITHUB_ACTIONS=true
-ci: installCi lint test prepare
-
+.PHONY: testCICoverage
 testCoverage:
-	jest --collectCoverage
+	npm run jest:collectCoverage
 
+.PHONY: ci
+ci: export GITHUB_ACTIONS=true
+ci: installCi test prepare
+
+.PHONY: ciAll
+ciAll: export GITHUB_ACTIONS=true
+ciAll: installCi lint test prepare
+
+.PHONY: nodemon
 nodemon:
 	npm run dev
 
+.PHONY: build
 build:
 	npm run build
 
+.PHONY: run
 run:
 	npm run start
 
+.PHONY: help
 help:
 	@echo "node module makefile template"
 	@echo ""
