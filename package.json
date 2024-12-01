@@ -41,7 +41,7 @@
     "standard-version": "^9.5.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.2",
+    "@vercel/ncc": "^0.38.3",
     "eslint-plugin-jest": "^28.8.3",
     "eslint": "^9.13.0",
     "jest": "^29.7.0",
