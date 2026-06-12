@@ -17,7 +17,7 @@ jobs:
       matrix:
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           # - 'lts/*'
-          - '20.x'
+          - '24.x'
         os:
           - ubuntu-latest
           - windows-latest
