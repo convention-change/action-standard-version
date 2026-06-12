@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.0](https://github.com/convention-change/action-standard-version/compare/v1.2.0...v1.3.0) (2026-06-12)
+
+### ✨ Features
+
+* add gh-prerelease workflow and update node version in node-ci ([f02fcc06](https://github.com/convention-change/action-standard-version/commit/f02fcc067fe570c79b7a78b00751ba1d667d9038))
+
 ## [1.2.0](https://github.com/convention-change/action-standard-version/compare/v1.1.2...v1.2.0) (2026-06-12)
 
 ### ✨ Features
