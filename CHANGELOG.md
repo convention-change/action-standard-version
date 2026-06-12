@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.3](https://github.com/convention-change/action-standard-version/compare/v1.3.2...v1.3.3) (2026-06-12)
+
+### 👷‍ Build System
+
+* update version-check action to v1.5.0 ([ee6d6bbf](https://github.com/convention-change/action-standard-version/commit/ee6d6bbff56935a0237e4c20d558e21f1b58860a))
+
 ## [1.3.2](https://github.com/convention-change/action-standard-version/compare/v1.3.1...v1.3.2) (2026-06-12)
 
 ### 🐛 Bug Fixes
