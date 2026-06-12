@@ -52,7 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: .github/workflows/version.yml
+      - uses: ./.github/workflows/version.yml
         id: check-version
         with:
           sha-length: 8
