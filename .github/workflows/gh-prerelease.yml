@@ -52,8 +52,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: ./.github/workflows/version.yml
+      - name: version
         id: check-version
+        uses: convention-change/conventional-version-check@v1.5.0 # or change to latest version
         with:
           sha-length: 8
 
