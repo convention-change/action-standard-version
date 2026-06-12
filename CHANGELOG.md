@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.2](https://github.com/convention-change/action-standard-version/compare/v1.3.1...v1.3.2) (2026-06-12)
+
+### 🐛 Bug Fixes
+
+* correct path to version.yml in gh-prerelease workflow ([5354299d](https://github.com/convention-change/action-standard-version/commit/5354299d566bdda51f27526bbae430cce73e03a1))
+
 ## [1.3.1](https://github.com/convention-change/action-standard-version/compare/v1.3.0...v1.3.1) (2026-06-12)
 
 ### 🐛 Bug Fixes
